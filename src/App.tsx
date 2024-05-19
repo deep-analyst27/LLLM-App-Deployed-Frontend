@@ -53,7 +53,7 @@ function App() {
 
     setMessages(prevMessages => [...prevMessages, {message, isUser: true}]);
 
-    await fetchEventSource(process.env.NEXT_PUBLIC_API_URL + `/rag/stream`, {
+    await fetchEventSource(process.env.REACT_APP_API_URL + `/rag/stream`, {
       method: 'POST',
       openWhenHidden: true,
       headers: {
@@ -99,7 +99,7 @@ function App() {
   
     // Example: Sending files to a backend endpoint
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/upload', {
+      const response = await fetch(process.env.REACT_APP_API_URL + '/upload', {
         method: 'POST',
         body: formData, // No headers for multipart/form-data; fetch adds it automatically
       });
@@ -116,7 +116,7 @@ function App() {
 
   const loadAndProcessPDFs = async () => {
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/load-and-process-pdfs', {
+      const response = await fetch(process.env.REACT_APP_API_URL + '/load-and-process-pdfs', {
         method: 'POST',
       });
       if (response.ok) {
@@ -150,7 +150,7 @@ function App() {
                         <a
                           target="_blank"
                           download
-                          href={`${process.env.NEXT_PUBLIC_API_URL}/rag/static/${encodeURI(formatSource(source))}`}
+                          href={`${process.env.REACT_APP_API_URL}/rag/static/${encodeURI(formatSource(source))}`}
                           rel="noreferrer"
                           className="text-blue-600 hover:text-blue-800"
                         >{formatSource(source)}</a>
